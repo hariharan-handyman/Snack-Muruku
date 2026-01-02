@@ -10,27 +10,27 @@ const config: Config = {
         extend: {
             colors: {
                 primary: {
-                    DEFAULT: "#C58E1A", // Golden Mustard
+                    DEFAULT: "#0F172A", // Deep Navy
                     foreground: "#FFFFFF",
                 },
                 secondary: {
-                    DEFAULT: "#1A1A1A", // Deep Obsidian
-                    foreground: "#F9F6F0",
+                    DEFAULT: "#475569", // Slate
+                    foreground: "#F8FAFC",
                 },
-                background: "#F9F6F0", // Creamy Heritage White
-                foreground: "#1A1A1A",
+                background: "#FFFFFF",
+                foreground: "#0F172A",
                 accent: {
-                    DEFAULT: "#8B0000", // Deep Maroon
+                    DEFAULT: "#2563EB", // Blue
                     foreground: "#FFFFFF",
                 },
-                card: {
-                    DEFAULT: "#FFFFFF",
-                    foreground: "#1A1A1A",
+                muted: {
+                    DEFAULT: "#F1F5F9",
+                    foreground: "#64748B",
                 },
             },
             fontFamily: {
-                serif: ["var(--font-serif)"],
-                sans: ["var(--font-sans)"],
+                sans: ["var(--font-inter)", "sans-serif"],
+                display: ["var(--font-inter)", "sans-serif"],
             },
         },
     },

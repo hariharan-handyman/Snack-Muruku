@@ -56,141 +56,125 @@ export default function Shop() {
     );
 
     return (
-        <div className="min-h-screen bg-[#F9F6F0]">
-            {/* Premium Header */}
-            <header className="bg-white border-b border-primary/10 sticky top-0 z-40 transition-shadow duration-300">
-                <div className="max-w-7xl mx-auto px-4 md:px-8 h-20 flex items-center justify-between gap-6">
-                    <Link href="/" className="flex items-center gap-2 min-w-fit">
-                        <Image src="/logo.png" alt="Logo" width={40} height={40} />
-                        <span className="font-serif font-bold text-2xl text-secondary">HANDYMAN</span>
+        <div className="min-h-screen bg-slate-50 font-sans">
+            {/* Standard Corporate Header */}
+            <header className="bg-white border-b border-slate-200 sticky top-0 z-40">
+                <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between gap-6">
+                    <Link href="/" className="flex items-center gap-3">
+                        <Image src="/logo.png" alt="Logo" width={32} height={32} />
+                        <span className="text-xl font-bold tracking-tight text-primary uppercase">HANDYMAN</span>
                     </Link>
 
-                    <div className="hidden md:flex flex-1 max-w-xl relative">
-                        <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-primary" size={20} />
+                    <div className="hidden md:flex flex-1 max-w-md relative">
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
                         <input
                             type="text"
-                            placeholder="Search for traditional Muruku, Sweets..."
+                            placeholder="Find products by name..."
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
-                            className="w-full pl-12 pr-6 py-3 bg-primary/5 border-none rounded-2xl focus:ring-2 focus:ring-primary/20 transition-all font-medium text-secondary"
+                            className="w-full pl-10 pr-4 py-2 bg-slate-100 border-none rounded-lg focus:ring-1 focus:ring-slate-300 transition-all text-sm text-primary placeholder:text-slate-500"
                         />
                     </div>
 
                     <div className="flex items-center gap-4">
-                        <button className="p-3 hover:bg-primary/10 rounded-full transition-colors relative group">
-                            <Heart className="w-6 h-6 text-secondary group-hover:text-primary transition-colors" />
-                            <span className="absolute top-2 right-2 w-2 h-2 bg-primary rounded-full" />
-                        </button>
-                        <Link href="/checkout" className="flex items-center gap-2 px-5 py-3 bg-secondary text-white rounded-2xl font-bold hover:bg-secondary/90 transition-all shadow-xl shadow-secondary/20">
-                            <ShoppingCart size={20} className="text-primary" />
-                            <span className="hidden sm:inline">Cart</span>
-                            <span className="bg-primary text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold tracking-tighter">{cartCount}</span>
+                        <Link href="/checkout" className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg font-bold text-sm hover:bg-slate-800 transition-all">
+                            <ShoppingCart size={18} />
+                            <span className="hidden sm:inline">Checkout</span>
+                            <span className="bg-white/20 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center ml-1">{cartCount}</span>
                         </Link>
                     </div>
                 </div>
             </header>
 
             {/* Main Content */}
-            <main className="max-w-7xl mx-auto px-4 md:px-8 py-10">
-                {/* Category Pills - Zomato Style */}
-                <div className="flex gap-4 overflow-x-auto pb-8 scrollbar-hide">
-                    {categories.map((cat) => (
-                        <button
-                            key={cat}
-                            onClick={() => setCategory(cat)}
-                            className={`px-6 py-2.5 rounded-full font-bold whitespace-nowrap transition-all border ${category === cat
-                                ? "bg-primary text-white border-primary shadow-lg shadow-primary/20 scale-105"
-                                : "bg-white text-secondary border-gray-100 hover:border-primary/30"
-                                }`}
-                        >
-                            {cat}
-                        </button>
-                    ))}
+            <main className="max-w-7xl mx-auto px-6 py-8">
+                {/* Category Filtering */}
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-8">
+                    <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
+                        {categories.map((cat) => (
+                            <button
+                                key={cat}
+                                onClick={() => setCategory(cat)}
+                                className={`px-4 py-1.5 rounded-md text-xs font-bold uppercase tracking-wider transition-all border ${category === cat
+                                    ? "bg-primary text-white border-primary"
+                                    : "bg-white text-slate-600 border-slate-200 hover:border-slate-400"
+                                    }`}
+                            >
+                                {cat}
+                            </button>
+                        ))}
+                    </div>
+                    <div className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+                        Displaying {filteredProducts.length} Results
+                    </div>
                 </div>
 
-                {/* Hero Banner for Category */}
-                <div className="mb-12 relative h-48 md:h-64 rounded-[40px] overflow-hidden bg-secondary">
-                    <div className="absolute inset-0 bg-gradient-to-r from-secondary via-secondary/70 to-transparent z-10 p-12 flex flex-col justify-center">
-                        <h2 className="text-3xl md:text-5xl font-serif font-black text-white italic mb-2 tracking-tight">
-                            {category === "All" ? "Heritage Delicacies" : category}
-                        </h2>
-                        <p className="text-primary/80 font-bold uppercase tracking-widest text-xs">
-                            5 Generations of Authenticity • Powered by Her Hands
-                        </p>
-                    </div>
-                    <div className="absolute inset-0 z-0">
-                        <div className="absolute top-[-20%] right-[-10%] w-[50%] h-[150%] bg-primary/20 rotate-12 blur-[80px]" />
-                    </div>
+                {/* Subdued Banner */}
+                <div className="mb-10 py-10 px-8 rounded-xl bg-primary text-white border border-slate-800">
+                    <h2 className="text-3xl font-bold mb-2 tracking-tight">
+                        {category === "All" ? "Full Product Line" : category}
+                    </h2>
+                    <p className="text-white/50 text-xs font-bold uppercase tracking-[0.2em] mb-0">
+                        Professional Distribution • Quality Assurance • Micro-Entrepreneur Empowerment
+                    </p>
                 </div>
 
                 {/* Product Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     <AnimatePresence mode="popLayout">
                         {loading ? (
                             Array(8).fill(0).map((_, i) => (
-                                <div key={i} className="bg-white rounded-[40px] h-[400px] animate-pulse border border-gray-100" />
+                                <div key={i} className="bg-white rounded-xl h-[380px] animate-pulse border border-slate-200" />
                             ))
                         ) : filteredProducts.length === 0 ? (
-                            <div className="col-span-full py-20 text-center">
-                                <p className="text-2xl font-serif italic text-secondary/40">No delicacies found in this collection...</p>
+                            <div className="col-span-full py-24 text-center border-2 border-dashed border-slate-200 rounded-2xl">
+                                <p className="text-slate-400 font-bold uppercase tracking-widest text-sm">No items match your current filter.</p>
                             </div>
                         ) : filteredProducts.map((product) => (
                             <motion.div
                                 layout
                                 key={product.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, scale: 0.9 }}
-                                className="bg-white rounded-[40px] border border-gray-100 overflow-hidden hover:shadow-2xl hover:shadow-primary/10 transition-all group flex flex-col"
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                exit={{ opacity: 0 }}
+                                className="bg-white rounded-xl border border-slate-200 overflow-hidden hover:shadow-md transition-all flex flex-col pro-card"
                             >
-                                <div className="relative aspect-square overflow-hidden bg-gray-50">
+                                <div className="relative aspect-[4/3] overflow-hidden bg-slate-50 border-b border-slate-100">
                                     {product.imageUrl && (
                                         <Image
                                             src={product.imageUrl}
                                             alt={product.name}
                                             fill
-                                            className="object-cover group-hover:scale-110 transition-transform duration-700"
+                                            className="object-cover"
                                         />
                                     )}
-                                    <motion.button
-                                        whileTap={{ scale: 1.2 }}
-                                        className="absolute top-5 right-5 p-3 bg-white/80 backdrop-blur-md rounded-full text-secondary hover:text-primary transition-colors shadow-lg"
-                                    >
-                                        <Heart size={20} />
-                                    </motion.button>
-                                    <div className="absolute bottom-5 left-5 bg-secondary/80 backdrop-blur-md text-white rounded-xl px-3 py-1 text-[10px] font-black uppercase tracking-widest flex items-center gap-1 border border-white/10">
-                                        <Star size={10} className="fill-primary text-primary" /> 4.9 Best Seller
+                                    <div className="absolute top-3 right-3 bg-white/90 backdrop-blur-sm text-primary rounded px-2 py-1 text-[9px] font-bold uppercase tracking-widest border border-slate-200">
+                                        Verified
                                     </div>
                                 </div>
 
-                                <div className="p-8 flex-1 flex flex-col justify-between">
-                                    <div>
-                                        <div className="flex justify-between items-start mb-2">
-                                            <span className="text-secondary/40 text-[10px] font-black uppercase tracking-widest">{product.category}</span>
-                                            <div className="flex gap-1">
-                                                <ShieldCheck className="w-3 h-3 text-primary" />
-                                                <span className="text-[8px] font-bold text-primary italic uppercase underline">Hygienic</span>
-                                            </div>
+                                <div className="p-6 flex-1 flex flex-col justify-between">
+                                    <div className="mb-4">
+                                        <div className="flex justify-between items-center mb-2">
+                                            <span className="text-slate-400 text-[9px] font-bold uppercase tracking-widest">{product.category}</span>
+                                            <span className="text-accent text-[9px] font-bold uppercase tracking-widest">In Stock</span>
                                         </div>
-                                        <h3 className="text-xl font-bold text-secondary font-serif mb-2 line-clamp-1 group-hover:text-primary transition-colors">{product.name}</h3>
-                                        <p className="text-xs text-secondary/50 font-medium mb-4 line-clamp-2 leading-relaxed italic">
-                                            {product.description || "A time-honored recipe passed through 5 generations of heritage snack making."}
+                                        <h3 className="text-lg font-bold text-primary mb-1 tracking-tight line-clamp-1">{product.name}</h3>
+                                        <p className="text-[13px] text-slate-500 line-clamp-2 leading-relaxed h-10">
+                                            {product.description || "Standard heritage production unit."}
                                         </p>
                                     </div>
 
-                                    <div className="flex items-center justify-between mt-4 bg-primary/5 p-4 rounded-3xl border border-primary/10">
+                                    <div className="flex items-center justify-between pt-4 border-t border-slate-50">
                                         <div className="flex flex-col">
-                                            <span className="text-[10px] font-black text-secondary/30 uppercase tracking-tighter">Premium Unit</span>
-                                            <div className="flex items-baseline gap-1">
-                                                <span className="text-2xl font-black text-secondary font-serif">₹{product.price}</span>
-                                                <span className="text-[10px] font-bold text-secondary/40 italic">/{product.weight}g</span>
-                                            </div>
+                                            <span className="text-2xl font-bold text-primary">₹{product.price}</span>
+                                            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Net Weight: {product.weight}g</span>
                                         </div>
                                         <button
                                             onClick={() => addToCart(product)}
-                                            className="p-4 bg-primary text-white rounded-2xl hover:scale-110 transition-all shadow-lg shadow-primary/30 group/btn"
+                                            className="p-2.5 bg-slate-50 border border-slate-200 text-primary rounded-lg hover:bg-primary hover:text-white transition-all"
                                         >
-                                            <Plus size={24} className="group-hover/btn:rotate-90 transition-transform" />
+                                            <Plus size={18} />
                                         </button>
                                     </div>
                                 </div>
@@ -200,20 +184,12 @@ export default function Shop() {
                 </div>
             </main>
 
-            {/* Quick Footer for Shop */}
-            <footer className="py-12 border-t border-primary/5 text-center text-secondary/30 font-serif italic text-sm">
-                Premium Heritage Snacks • Powered by Her Hands • Express Global Shipping
+            {/* Professional Footer */}
+            <footer className="py-12 bg-white border-t border-slate-200 text-center">
+                <p className="text-slate-400 text-[10px] font-bold uppercase tracking-[0.3em]">
+                    Quality Standardized • Global Logistics • Handyman Technologies
+                </p>
             </footer>
-
-            <style jsx global>{`
-        .scrollbar-hide::-webkit-scrollbar {
-          display: none;
-        }
-        .scrollbar-hide {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-      `}</style>
         </div>
     );
 }
