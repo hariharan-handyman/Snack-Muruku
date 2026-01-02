@@ -1,6 +1,14 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: #C58E1A;
+  --color-secondary: #1A1A1A;
+  --color-accent: #8B0000;
+  --font-serif: var(--font-playfair);
+  --font-sans: var(--font-inter);
+}
 
 :root {
   --background: #F9F6F0;
@@ -9,7 +17,8 @@
 
 @layer base {
   body {
-    @apply bg-background text-foreground;
+    background-color: var(--background);
+    color: var(--foreground);
   }
 }
 
