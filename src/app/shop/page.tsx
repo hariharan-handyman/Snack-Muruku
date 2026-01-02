@@ -186,9 +186,13 @@ export default function Shop() {
 
             {/* Professional Footer */}
             <footer className="py-12 bg-white border-t border-slate-200 text-center">
-                <p className="text-slate-400 text-[10px] font-bold uppercase tracking-[0.3em]">
+                <p className="text-slate-400 text-[10px] font-bold uppercase tracking-[0.3em] mb-4">
                     Quality Standardized • Global Logistics • Handyman Technologies
                 </p>
+                <div className="flex flex-col gap-1 text-[10px] text-slate-500 font-bold uppercase tracking-widest">
+                    <a href="tel:+919042387152" className="hover:text-primary transition-colors">+91 9042387152</a>
+                    <a href="mailto:handyman.tech.in@gmail.com" className="hover:text-primary transition-colors">handyman.tech.in@gmail.com</a>
+                </div>
             </footer>
         </div>
     );

@@ -9,10 +9,14 @@ import {
     LogOut,
     ChevronRight,
     Menu,
-    X
+    X,
+    Loader2
 } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "@/lib/firebase";
 
 export default function AdminLayout({
     children,
@@ -20,6 +24,33 @@ export default function AdminLayout({
     children: React.ReactNode;
 }) {
     const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+    const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState<any>(null);
+    const router = useRouter();
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+            if (!currentUser) {
+                router.push("/login");
+            } else {
+                setUser(currentUser);
+                setLoading(false);
+            }
+        });
+
+        return () => unsubscribe();
+    }, [router]);
+
+    if (loading) {
+        return (
+            <div className="min-h-screen flex items-center justify-center bg-background-alt">
+                <div className="flex flex-col items-center gap-4">
+                    <Loader2 className="w-8 h-8 text-primary animate-spin" />
+                    <p className="text-xs font-bold text-slate-400 uppercase tracking-widest">Verifying Credentials...</p>
+                </div>
+            </div>
+        );
+    }
 
     const menuItems = [
         { icon: LayoutDashboard, label: "Dashboard", href: "/admin" },
@@ -65,7 +96,10 @@ export default function AdminLayout({
                 </nav>
 
                 <div className="p-4 border-t border-white/5">
-                    <button className="flex items-center gap-3 p-3 w-full rounded-lg hover:bg-red-500/10 text-slate-400 hover:text-red-400 transition-all">
+                    <button
+                        onClick={() => auth.signOut()}
+                        className="flex items-center gap-3 p-3 w-full rounded-lg hover:bg-red-500/10 text-slate-400 hover:text-red-400 transition-all"
+                    >
                         <LogOut size={20} className="min-w-[20px]" />
                         <span className={`${!isSidebarOpen && "hidden"} font-bold text-xs uppercase tracking-wider`}>Sign Out</span>
                     </button>
@@ -79,7 +113,7 @@ export default function AdminLayout({
                     <div className="flex items-center gap-4">
                         <div className="text-right hidden sm:block">
                             <p className="text-[11px] font-bold text-primary uppercase tracking-wider">Operational Lead</p>
-                            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tight">System Admin</p>
+                            <p className="text-[10px] text-slate-400 font-bold uppercase tracking-tight">{user?.email}</p>
                         </div>
                         <div className="w-8 h-8 rounded-lg bg-slate-100 flex items-center justify-center text-primary font-bold text-xs">
                             AD

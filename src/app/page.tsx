@@ -156,9 +156,9 @@ export default function Home() {
             <Link href="/shop" className="px-8 py-4 bg-white text-primary font-bold rounded-lg hover:bg-slate-100 transition-all">
               Access Products
             </Link>
-            <Link href="/shop" className="px-8 py-4 border border-white/20 text-white font-bold rounded-lg hover:bg-white/10 transition-all">
+            <a href="mailto:handyman.tech.in@gmail.com" className="px-8 py-4 border border-white/20 text-white font-bold rounded-lg hover:bg-white/10 transition-all">
               Contact Sales
-            </Link>
+            </a>
           </div>
         </div>
       </section>
@@ -190,6 +190,21 @@ export default function Home() {
                 <li><Link href="#" className="hover:text-primary">Privacy Policy</Link></li>
                 <li><Link href="#" className="hover:text-primary">Terms of Service</Link></li>
                 <li><Link href="#" className="hover:text-primary">Compliance</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-sm text-primary uppercase tracking-widest mb-6">Contact</h4>
+              <ul className="space-y-4 text-sm text-slate-500 font-medium">
+                <li>
+                  <a href="tel:+919042387152" className="hover:text-primary block">
+                    +91 9042387152
+                  </a>
+                </li>
+                <li>
+                  <a href="mailto:handyman.tech.in@gmail.com" className="hover:text-primary block">
+                    handyman.tech.in@gmail.com
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
