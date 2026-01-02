@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import ImageKit from "imagekit";
 import { NextResponse } from "next/server";
 

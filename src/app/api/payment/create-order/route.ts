@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { getDb } from "@/lib/db";
 import { orders } from "@/db/schema";
 import { getRazorpay } from "@/lib/razorpay";
