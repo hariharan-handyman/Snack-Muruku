@@ -127,7 +127,7 @@ export default function Home() {
             >
               <span className="text-primary font-bold uppercase tracking-widest text-sm mb-6 block">Our Legacy</span>
               <h2 className="text-5xl md:text-6xl font-serif font-bold mb-10 leading-tight">
-                "Powered by <span className="text-primary italic">Her Hands.</span>"
+                &quot;Powered by <span className="text-primary italic">Her Hands.</span>&quot;
               </h2>
               <div className="space-y-8 text-lg font-sans leading-relaxed text-background/70">
                 <p>

@@ -32,7 +32,7 @@ function SuccessContent() {
                 Order Confirmed!
             </h1>
             <p className="text-lg text-secondary/50 font-medium mb-10 italic">
-                "5 Generations of Taste are now on the way to you."
+                &quot;5 Generations of Taste are now on the way to you.&quot;
             </p>
 
             <div className="grid md:grid-cols-2 gap-6 mb-12">

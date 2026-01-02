@@ -30,7 +30,7 @@ export default function AdminDashboard() {
         <div className="space-y-10">
             <header>
                 <h1 className="text-4xl font-black text-secondary font-serif mb-2">Heritage Analytics</h1>
-                <p className="text-secondary/50 font-medium italic">"Taste that transcends generations, tracked in real-time."</p>
+                <p className="text-secondary/50 font-medium italic">&quot;Taste that transcends generations, tracked in real-time.&quot;</p>
             </header>
 
             {/* Stats Grid */}
