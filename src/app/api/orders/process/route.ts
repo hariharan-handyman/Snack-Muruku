@@ -33,7 +33,7 @@ export async function POST(req: Request) {
             billing_email: order.customerEmail,
             billing_phone: order.customerPhone,
             shipping_is_billing: true,
-            order_items: order.items.map((item: any) => ({
+            order_items: (order.items as any[]).map((item: any) => ({
                 name: item.name,
                 sku: item.id.toString(),
                 units: item.quantity,
