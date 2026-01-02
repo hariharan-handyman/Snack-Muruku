@@ -20,6 +20,8 @@ const fadeInUp = {
   transition: { duration: 0.6 }
 };
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   return (
     <main className="min-h-screen bg-background">
