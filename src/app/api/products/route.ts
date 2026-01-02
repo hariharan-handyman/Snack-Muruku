@@ -1,10 +1,11 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { products } from "@/db/schema";
 import { NextResponse } from "next/server";
 import { desc } from "drizzle-orm";
 
 export async function GET() {
     try {
+        const db = getDb();
         const allProducts = await db.select().from(products).orderBy(desc(products.createdAt));
         return NextResponse.json(allProducts);
     } catch (error) {
@@ -14,6 +15,7 @@ export async function GET() {
 
 export async function POST(req: Request) {
     try {
+        const db = getDb();
         const body = await req.json();
         const { name, category, price, weight, stock, description, imageUrl } = body;
 

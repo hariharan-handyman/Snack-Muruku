@@ -1,10 +1,11 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { orders } from "@/db/schema";
 import { NextResponse } from "next/server";
 import { desc } from "drizzle-orm";
 
 export async function GET() {
     try {
+        const db = getDb();
         const allOrders = await db.select().from(orders).orderBy(desc(orders.createdAt));
         return NextResponse.json(allOrders);
     } catch (error) {

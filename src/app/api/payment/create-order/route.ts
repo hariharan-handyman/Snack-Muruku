@@ -1,10 +1,11 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { orders } from "@/db/schema";
 import { getRazorpay } from "@/lib/razorpay";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
     try {
+        const db = getDb();
         const { items, amount, customer } = await req.json();
         const razorpay = getRazorpay();
 

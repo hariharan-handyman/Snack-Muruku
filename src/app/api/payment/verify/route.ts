@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { orders } from "@/db/schema";
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
@@ -6,6 +6,7 @@ import crypto from "crypto";
 
 export async function POST(req: Request) {
     try {
+        const db = getDb();
         const { razorpay_order_id, razorpay_payment_id, razorpay_signature, orderId } = await req.json();
 
         const text = razorpay_order_id + "|" + razorpay_payment_id;

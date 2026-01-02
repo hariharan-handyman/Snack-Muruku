@@ -1,4 +1,4 @@
-import { db } from "@/lib/db";
+import { getDb } from "@/lib/db";
 import { orders } from "@/db/schema";
 import { getShiprocketToken } from "@/lib/shiprocket";
 import { NextResponse } from "next/server";
@@ -6,6 +6,7 @@ import { eq } from "drizzle-orm";
 
 export async function POST(req: Request) {
     try {
+        const db = getDb();
         const { orderId } = await req.json();
 
         const order = await db.query.orders.findFirst({
