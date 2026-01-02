@@ -110,7 +110,7 @@ export default function Checkout() {
     };
 
     return (
-        <div className="min-h-screen bg-slate-50 font-sans pb-20">
+        <div className="min-h-screen bg-background-alt font-sans pb-20">
             <script src="https://checkout.razorpay.com/v1/checkout.js" async></script>
 
             <div className="max-w-6xl mx-auto px-6 pt-12">

@@ -51,71 +51,62 @@ export default function Home() {
         </div>
       </nav>
 
-      {/* Corporate Hero Section */}
-      <section className="pt-32 pb-24 border-b border-slate-100 bg-slate-50/50">
-        <div className="container mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-20 items-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-white border border-slate-200 rounded text-slate-500 font-bold text-[10px] mb-6 uppercase tracking-[0.2em]">
-                Authentic Heritage & Hygiene
-              </div>
-              <h1 className="text-5xl md:text-6xl font-extrabold text-primary mb-6 leading-[1.1] tracking-tight">
-                Global Supply of <br />
-                <span className="text-accent underline decoration-slate-200 underline-offset-8">Time-Honored Tastes.</span>
-              </h1>
-              <p className="text-lg text-slate-600 mb-10 max-w-lg leading-relaxed">
-                Handyman Technologies facilitates the distribution of high-quality, hygiene-compliant snacks from 5th-generation families to a global audience.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/shop" className="px-8 py-4 bg-primary text-white font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-slate-800 transition-all">
-                  Browse Catalog <ArrowRight className="w-4 h-4" />
-                </Link>
-                <Link href="#values" className="px-8 py-4 border border-slate-200 bg-white text-slate-900 font-bold rounded-lg hover:bg-slate-50 transition-all">
-                  Core Values
-                </Link>
-              </div>
-            </motion.div>
-
-            <div className="relative hidden lg:block">
-              <div className="pro-card p-12 rounded-2xl">
-                <div className="flex items-center justify-between mb-12">
-                  <div className="space-y-1">
-                    <p className="text-[10px] uppercase font-bold text-slate-400 tracking-widest">Enterprise Trust</p>
-                    <p className="text-2xl font-bold text-primary">5 Generations</p>
-                  </div>
-                  <div className="w-16 h-16 relative">
-                    <Image src="/logo.png" alt="Handyman Tech" fill className="object-contain" />
-                  </div>
-                </div>
-                <div className="space-y-6">
-                  {[
-                    { label: "Compliance", value: "FSSAI Certified" },
-                    { label: "Community", value: "100+ Home Units" },
-                    { label: "Shipping", value: "Global Logistics" },
-                  ].map((stat) => (
-                    <div key={stat.label} className="flex justify-between items-center pb-4 border-b border-slate-100 last:border-0">
-                      <span className="text-slate-500 text-sm">{stat.label}</span>
-                      <span className="font-bold text-primary">{stat.value}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
+      {/* Corporate Hero Section - Centered & Professional */}
+      <section className="pt-32 pb-20 border-b border-slate-100 bg-white">
+        <div className="container mx-auto px-6 max-w-4xl text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="flex flex-col items-center"
+          >
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-slate-50 border border-slate-200 rounded text-slate-500 font-bold text-[9px] mb-8 uppercase tracking-[0.3em]">
+              Operational Quality & Excellence
             </div>
-          </div>
+
+            <h1 className="text-3xl md:text-4xl font-bold text-primary mb-6 leading-tight tracking-tight max-w-2xl">
+              Professional Distribution of <br />
+              <span className="text-accent">Premium Standardized Delicacies.</span>
+            </h1>
+
+            <p className="text-sm md:text-base text-slate-500 mb-10 max-w-xl leading-relaxed font-medium">
+              Handyman Technologies bridges the gap between traditional food craft and modern retail standards through rigorous quality assurance and efficient supply chain management.
+            </p>
+
+            <div className="flex flex-wrap gap-4 justify-center">
+              <Link href="/shop" className="px-6 py-3 bg-primary text-white font-bold rounded shadow-lg hover:shadow-xl hover:bg-secondary transition-all text-xs uppercase tracking-widest">
+                Browse Product Line
+              </Link>
+              <Link href="#values" className="px-6 py-3 border border-slate-200 bg-white text-primary font-bold rounded hover:bg-slate-50 transition-all text-xs uppercase tracking-widest">
+                Our Methodology
+              </Link>
+            </div>
+
+            {/* Subdued Reliability Stats */}
+            <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-8 w-full border-t border-slate-100 pt-10">
+              {[
+                { label: "Compliance", val: "FSSAI Audit" },
+                { label: "Community", val: "100+ Units" },
+                { label: "Network", val: "Global Reach" },
+                { label: "Tradition", val: "5 Generations" },
+              ].map((s) => (
+                <div key={s.label} className="space-y-1">
+                  <p className="text-[9px] uppercase font-bold text-slate-400 tracking-widest">{s.label}</p>
+                  <p className="text-xs font-bold text-primary">{s.val}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
       {/* Core Values Section */}
       <section id="values" className="py-24 bg-white">
         <div className="container mx-auto px-6">
-          <div className="max-w-2xl mb-16">
-            <span className="text-accent font-bold text-[11px] uppercase tracking-widest mb-4 block">Corporate Responsibility</span>
-            <h2 className="text-4xl font-bold text-primary mb-6 tracking-tight">Standardizing the handmade for the 21st century.</h2>
-            <p className="text-slate-500 leading-relaxed">We empower female-led home units by providing a professional supply chain and quality assurance framework.</p>
+          <div className="max-w-2xl mx-auto text-center mb-16">
+            <span className="text-accent font-bold text-[11px] uppercase tracking-widest mb-4 block">Process Integrity</span>
+            <h2 className="text-3xl font-bold text-primary mb-6 tracking-tight">Industrializing tradition for the modern era.</h2>
+            <p className="text-slate-500 text-sm leading-relaxed">We provide a professional supply chain and quality control framework for distributed home-production units.</p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

@@ -2,21 +2,22 @@
 
 @theme {
   --color-background: var(--background);
+  --color-background-alt: var(--background-alt);
   --color-foreground: var(--foreground);
-  --color-primary: #0F172A;
-  /* Deep Navy */
-  --color-secondary: #334155;
-  /* Slate */
-  --color-accent: #2563EB;
-  /* Professional Blue */
+  --color-primary: #1E40AF;
+  /* Deep Blue */
+  --color-secondary: #3B82F6;
+  /* Royal Blue */
+  --color-accent: #FACC15;
+  /* Vibrant Yellow */
   --font-serif: var(--font-inter);
-  /* Force Sans for professional look */
   --font-sans: var(--font-inter);
 }
 
 :root {
   --background: #FFFFFF;
-  --foreground: #0F172A;
+  --background-alt: #FBFCFF;
+  --foreground: #1E3A8A;
 }
 
 @layer base {

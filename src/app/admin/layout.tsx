@@ -29,7 +29,7 @@ export default function AdminLayout({
     ];
 
     return (
-        <div className="flex min-h-screen bg-[#f8fafc]">
+        <div className="flex min-h-screen bg-background-alt">
             {/* Sidebar */}
             <aside
                 className={`${isSidebarOpen ? "w-64" : "w-20"

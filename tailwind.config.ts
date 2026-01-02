@@ -10,21 +10,21 @@ const config: Config = {
         extend: {
             colors: {
                 primary: {
-                    DEFAULT: "#0F172A", // Deep Navy
+                    DEFAULT: "#1E40AF", // Deep Blue
                     foreground: "#FFFFFF",
                 },
                 secondary: {
-                    DEFAULT: "#475569", // Slate
-                    foreground: "#F8FAFC",
-                },
-                background: "#FFFFFF",
-                foreground: "#0F172A",
-                accent: {
-                    DEFAULT: "#2563EB", // Blue
+                    DEFAULT: "#3B82F6", // Royal Blue
                     foreground: "#FFFFFF",
                 },
+                background: "#FFFFFF",
+                foreground: "#1E3A8A",
+                accent: {
+                    DEFAULT: "#FACC15", // Yellow
+                    foreground: "#1E3A8A",
+                },
                 muted: {
-                    DEFAULT: "#F1F5F9",
+                    DEFAULT: "#F8FAFC",
                     foreground: "#64748B",
                 },
             },
